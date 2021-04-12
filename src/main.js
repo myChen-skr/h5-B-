@@ -4,7 +4,7 @@ import "./index.css";
 import router from "./router";
 
 //按需引入vant的按钮组件
-import { Button, Tabbar, TabbarItem, Icon , Search, Toast, Skeleton, Swipe, SwipeItem, Tab, Tabs} from "vant";
+import { Button, Tabbar, TabbarItem, Icon , Search, Toast, Skeleton, Swipe, SwipeItem, Tab, Tabs, PullRefresh, Lazyload, Image as VanImage} from "vant";
 
 import "vant/lib/index.css";
 
@@ -25,6 +25,9 @@ createApp(App)
   .use(SwipeItem)
   .use(Tab)
   .use(Tabs)
+  .use(PullRefresh)
+  .use(Lazyload)
+  .use(VanImage)
   .mount("#app");
 //vue2写法
 // import { createApp } from 'vue'

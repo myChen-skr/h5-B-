@@ -14,6 +14,7 @@
 import MyNavBar from './components/MyNavBar.vue';
 import { useRouter } from "vue-router";
 import { reactive, toRefs } from "vue"; 
+import './assets/css/icon.css'
 
 export default {
   name: 'App',

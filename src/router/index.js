@@ -48,7 +48,47 @@ import Home from '../views/Home.vue'
             path:'/search',
             name:"Search",
             component:()=> import("../views/Search.vue"),
-        }    
+        },
+        {
+            path:'/sign-in',
+            name:"Sign-in",
+            component:()=> import("../views/Sign-in.vue"),
+        },
+        {
+            path:'/broadcast',
+            name:"Broadcast",
+            component:()=> import("../views/Broadcast.vue"),
+        },
+        {
+            path:'/hot',
+            name:"Hot",
+            component:()=> import("../views/Hot.vue"),
+        },
+        {
+            path:'/chase-after',
+            name:"Chase-after",
+            component:()=> import("../views/Chase-after.vue"),
+        },
+        {
+            path:'/jdbn',
+            name:"Jdbn",
+            component:()=> import("../views/Jdbn.vue"),
+        },
+        {
+            path:'/movies',
+            name:"Movies",
+            component:()=> import("../views/Movies.vue"),
+        },
+        {
+            path:'/recommend',
+            name:"Recommend",
+            component:()=> import("../views/Recommend.vue"),
+        },
+        {
+            path:'/resist-fy',
+            name:"Resist-fy",
+            component:()=> import("../views/Resist-fy.vue"),
+        }
     ]
 
     const router = createRouter({
