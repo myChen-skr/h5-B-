@@ -40,25 +40,79 @@
       <van-tab title="直播" name="a">直播</van-tab>
 
       <van-tab title="推荐" name="b">
-        <van-swipe :autoplay="3000" width="8px">
+        <van-swipe :autoplay="2000">
           <van-swipe-item v-for="(image, index) in images" :key="index">
-            <img v-lazy="image" />
+            <img :src="image" style="width: 100%" />
           </van-swipe-item>
         </van-swipe>
+
+        <van-image
+          style="height: 100%; width: 100%"
+          src="http://mychen-skr.oss-cn-beijing.aliyuncs.com/5.jpg"
+        >
+        </van-image>
+        <van-image
+          style="height: 100%; width: 100%"
+          src="http://mychen-skr.oss-cn-beijing.aliyuncs.com/6.jpg"
+        >
+        </van-image>
+        <van-image
+          style="height: 100%; width: 100%"
+          src="http://mychen-skr.oss-cn-beijing.aliyuncs.com/7.jpg"
+        >
+        </van-image>
       </van-tab>
 
       <van-tab title="热门" name="c">
-        <van-image width="100" height="100" src="http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E6%8E%92%E8%A1%8C%E6%A6%9C.jpg" />
-        <van-image width="100" height="100" src="http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E6%AF%8F%E5%91%A8%E5%BF%85%E7%9C%8B.jpg" />
-        <van-image width="100" height="100" src="http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E5%85%A5%E7%AB%99%E5%BF%85%E5%88%B7.jpg" />
+        <div class="Hot" style="height: 100%; width: 100%">
+          <div class="rank" style="alight: center">
+            <van-image
+              width="50"
+              height="50"
+              src="http://mychen-skr.oss-cn-beijing.aliyuncs.com/icon_rank.png"
+            >
+              <div>排行榜</div>
+            </van-image>
+          </div>
+
+          <div class="weekly">
+            <van-image
+              width="50"
+              height="50"
+              src="http://mychen-skr.oss-cn-beijing.aliyuncs.com/icon_weekly.png"
+            >
+              <div>每周必看</div>
+            </van-image>
+          </div>
+
+          <div class="history">
+            <van-image
+              width="50"
+              height="50"
+              src="http://mychen-skr.oss-cn-beijing.aliyuncs.com/icon_history.png"
+            >
+              <div>入站必刷</div>
+            </van-image>
+          </div>
+        </div>
+
+        <div class="home">
+          <view>
+            <view v-for="(hot, index) in hots" :key="index">
+              <div>
+                <img :src="hot.pic" />
+                <text>{{ hot.title }}</text>
+              </div>
+            </view>
+          </view>
+        </div>
       </van-tab>
 
       <van-tab title="追番" name="d">
-        <van-swipe :autoplay="3000" width="8px">
+        <van-swipe :autoplay="2000">
           <van-swipe-item v-for="(image, index) in images1" :key="index">
-            <img v-lazy="image" />
+            <img :src="image" style="height: 100%; width: 100%" />
           </van-swipe-item>
-          
         </van-swipe>
       </van-tab>
 
@@ -71,28 +125,54 @@
 
 <script>
 export default {
+  name: "Home",
   data() {
+    hots: [];
     return {
       images: [
-        "http://mychen-skr.oss-cn-beijing.aliyuncs.com/QQ%E5%9B%BE%E7%89%8720210412203817.jpg",
-        "http://mychen-skr.oss-cn-beijing.aliyuncs.com/QQ%E5%9B%BE%E7%89%8720210412203925.jpg",
-        "http://mychen-skr.oss-cn-beijing.aliyuncs.com/QQ%E5%9B%BE%E7%89%8720210412203934.jpg",
+        "http://mychen-skr.oss-cn-beijing.aliyuncs.com/4.jpg",
+        "http://mychen-skr.oss-cn-beijing.aliyuncs.com/3.jpg",
+        "http://mychen-skr.oss-cn-beijing.aliyuncs.com/1.jpg",
       ],
       images1: [
-        'https://i0.hdslb.com/bfs/bangumi/image/ba59792ab20197087291883a79e3663d85be9745.jpg@2320w_664h.jpg',
-        'https://i0.hdslb.com/bfs/bangumi/image/928db2e3b2d694a2b1e20b578cd7c181bf891aed.png@2320w_664h.png',
-        'https://i0.hdslb.com/bfs/bangumi/image/d14db471c753e135c84e0e2ea898a888d8ef0647.jpg@2320w_664h.jpg',
-        'https://i0.hdslb.com/bfs/bangumi/image/60eb2168ac8c249f3251f9bbd30caf915fb97822.png@2320w_664h.png',
-        'https://i0.hdslb.com/bfs/bangumi/image/08b3c97c5d2ec8f19d6f75dd72ad015ab222f662.png@2320w_664h.png',
-
-
+        "http://mychen-skr.oss-cn-beijing.aliyuncs.com/A.jpg",
+        "http://mychen-skr.oss-cn-beijing.aliyuncs.com/B.jpg",
+        "http://mychen-skr.oss-cn-beijing.aliyuncs.com/C.jpg",
+        "http://mychen-skr.oss-cn-beijing.aliyuncs.com/D.jpg",
+        "http://mychen-skr.oss-cn-beijing.aliyuncs.com/E.jpg",
+        "http://mychen-skr.oss-cn-beijing.aliyuncs.com/F.jpg",
       ],
+
       value: "",
       active: 2,
     };
   },
-  name: "Home",
+  created() {
+    this.axios.get("http://localhost:3000/popular").then((res) => {
+      this.hots = res.data.data;
+      console.log(this.hots);
+    });
+  },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.Hot {
+  float: left;
+  margin-left: 0%;
+  width: 80%;
+  margin-bottom: 0%;
+  height: 100%;
+}
+.rank,
+.weekly,
+.history {
+  float: left;
+  margin-top: 2%;
+  margin-left: 2.5%;
+  margin-bottom: 0%;
+  width: 30%;
+  height: 150px;
+}
+
+</style>

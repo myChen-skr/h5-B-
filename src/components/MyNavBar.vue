@@ -4,37 +4,58 @@
     <van-tabbar-item
       name="home"
       color="#FF3E96"
-      icon="http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E9%A6%96%E9%A1%B5%20(1).png"
       @click="link('/')"
-      >首页</van-tabbar-item
-    >
+      >
+      <span>首页</span>
+      <template #icon="props">
+        <img :src="props.active ? icon.active : icon.inactive">
+      </template>
+    </van-tabbar-item>
+
     <van-tabbar-item
       name="channel"
-      icon="http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E9%A2%91%E9%81%93.png"
       @click="link('/channel')"
-      >频道</van-tabbar-item
+      >
+        <span>频道</span>
+      <template #icon="props">
+        <img :src="props.active ? icon.active1 : icon.inactive1">
+      </template>
+      </van-tabbar-item
     >
     <van-tabbar-item
       name="dynamic"
       icon="http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E5%8A%A8%E6%80%81.png"
       @click="link('/dynamic')"
-      dot="right"
-      >动态</van-tabbar-item
+      >
+      <!-- dot="right" -->
+       <span>动态</span>
+      <template #icon="props">
+        <img :src="props.active ? icon.active2 : icon.inactive2">
+      </template>
+      </van-tabbar-item
     >
     <van-tabbar-item
       name="purchase"
-      icon="http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E8%B4%AD%E7%89%A9.png"
       @click="link('/purchase')"
-      >会员购</van-tabbar-item
+      >
+       <span>会员购</span>
+      <template #icon="props">
+        <img :src="props.active ? icon.active3 : icon.inactive3">
+      </template>
+      </van-tabbar-item
     >
     <van-tabbar-item
       name="profile"
       icon="http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E7%94%B5%E8%A7%86%E6%9C%BA.png"
       @click="link('/profile')"
-      badge="99+"
-      >我的</van-tabbar-item
+      > <!-- badge="99+" -->
+       <span>我的</span>
+      <template #icon="props">
+        <img :src="props.active ? icon.active4 : icon.inactive4">
+      </template>
+      </van-tabbar-item
     >
-  
+  </van-tabbar>
 </template>
 
 <script>
@@ -45,8 +66,16 @@ export default {
     return {
       active: 0,
       icon: {
-          active:'#FF3E96',
-          inactive:'#AAAAAA'
+          active:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E9%A6%96%E9%A1%B5%20(2).png',
+          inactive:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/home.png',
+          active1:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E9%A2%91%E9%81%93%20(2).png',
+          inactive1:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E9%A2%91%E9%81%93%20(1).png',
+          active2:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E5%8A%A8%E6%80%81%20(2).png',
+          inactive2:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E5%8A%A8%E6%80%81%20(1).png',
+          inactive3:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/purchase.jpg',
+          active3:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/purchase1.jpg',
+          inactive4:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/profile.jpg',
+          active4:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/prifile1.jpg'
       }
     };
   },
@@ -68,4 +97,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>

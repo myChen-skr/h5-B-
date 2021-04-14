@@ -2,14 +2,21 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import "./index.css";
 import router from "./router";
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+import Hot from "../Hotorders"
+
+
 
 //按需引入vant的按钮组件
-import { Button, Tabbar, TabbarItem, Icon , Search, Toast, Skeleton, Swipe, SwipeItem, Tab, Tabs, PullRefresh, Lazyload, Image as VanImage} from "vant";
+import { Button, Tabbar, TabbarItem, Icon , Search, Toast, Skeleton, Swipe, SwipeItem, Tab, Tabs, PullRefresh, Lazyload, Image as VanImage, List} from "vant";
 
 import "vant/lib/index.css";
 
 //引入移动端ren适配
 import "lib-flexible/flexible";
+import Hotorders from "../Hotorders";
 
 //链式写法
 createApp(App)
@@ -28,6 +35,9 @@ createApp(App)
   .use(PullRefresh)
   .use(Lazyload)
   .use(VanImage)
+  .use(List)
+  .use(VueAxios,axios)
+  .use(Hotorders)
   .mount("#app");
 //vue2写法
 // import { createApp } from 'vue'

@@ -88,6 +88,11 @@ import Home from '../views/Home.vue'
             path:'/resist-fy',
             name:"Resist-fy",
             component:()=> import("../views/Resist-fy.vue"),
+        },
+        {
+            path:'/test',
+            name:"Test",
+            component:()=> import("../views/test.vue"),
         }
     ]
 
