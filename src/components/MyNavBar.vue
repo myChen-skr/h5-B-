@@ -24,7 +24,6 @@
     >
     <van-tabbar-item
       name="dynamic"
-      icon="http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E5%8A%A8%E6%80%81.png"
       @click="link('/dynamic')"
       >
       <!-- dot="right" -->
@@ -46,7 +45,6 @@
     >
     <van-tabbar-item
       name="profile"
-      icon="http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E7%94%B5%E8%A7%86%E6%9C%BA.png"
       @click="link('/profile')"
       > <!-- badge="99+" -->
        <span>我的</span>
@@ -66,14 +64,14 @@ export default {
     return {
       active: 0,
       icon: {
-          active:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E9%A6%96%E9%A1%B5%20(2).png',
-          inactive:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/home.png',
-          active1:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E9%A2%91%E9%81%93%20(2).png',
-          inactive1:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E9%A2%91%E9%81%93%20(1).png',
+          active:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E9%A6%96%E9%A1%B5%20(4).png',
+          inactive:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E9%A6%96%E9%A1%B5%20(3).png',
+          active1:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E9%A2%91%E9%81%93%20(4).png',
+          inactive1:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E9%A2%91%E9%81%93%20(3).png',
           active2:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E5%8A%A8%E6%80%81%20(2).png',
           inactive2:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E5%8A%A8%E6%80%81%20(1).png',
-          inactive3:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/purchase.jpg',
-          active3:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/purchase1.jpg',
+          inactive3:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E4%BC%9A%E5%91%98%E8%B4%AD@2x.png',
+          active3:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E4%BC%9A%E5%91%98%E8%B4%AD%E6%BF%80%E6%B4%BB@2x.png',
           inactive4:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/profile.jpg',
           active4:'http://mychen-skr.oss-cn-beijing.aliyuncs.com/prifile1.jpg'
       }

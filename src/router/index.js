@@ -55,44 +55,19 @@ import Home from '../views/Home.vue'
             component:()=> import("../views/Sign-in.vue"),
         },
         {
-            path:'/broadcast',
-            name:"Broadcast",
-            component:()=> import("../views/Broadcast.vue"),
+            path:'/rank',
+            name:"Rank",
+            component:()=> import("../views/Rank.vue"),
         },
         {
-            path:'/hot',
-            name:"Hot",
-            component:()=> import("../views/Hot.vue"),
+            path:'/weekly',
+            name:"Weekly",
+            component:()=> import("../views/Weekly.vue"),
         },
         {
-            path:'/chase-after',
-            name:"Chase-after",
-            component:()=> import("../views/Chase-after.vue"),
-        },
-        {
-            path:'/jdbn',
-            name:"Jdbn",
-            component:()=> import("../views/Jdbn.vue"),
-        },
-        {
-            path:'/movies',
-            name:"Movies",
-            component:()=> import("../views/Movies.vue"),
-        },
-        {
-            path:'/recommend',
-            name:"Recommend",
-            component:()=> import("../views/Recommend.vue"),
-        },
-        {
-            path:'/resist-fy',
-            name:"Resist-fy",
-            component:()=> import("../views/Resist-fy.vue"),
-        },
-        {
-            path:'/test',
-            name:"Test",
-            component:()=> import("../views/test.vue"),
+            path:'/history',
+            name:"History",
+            component:()=> import("../views/History.vue"),
         }
     ]
 

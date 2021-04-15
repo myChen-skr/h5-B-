@@ -30,6 +30,7 @@
         </van-search>
       </form>
     </van-card>
+
     <van-tabs
       @click="onClick"
       v-model="active"
@@ -64,8 +65,8 @@
       </van-tab>
 
       <van-tab title="热门" name="c">
-        <div class="Hot" style="height: 100%; width: 100%">
-          <div class="rank" style="alight: center">
+        <div>
+          <div class="rank" style="alight: center" >
             <van-image
               width="50"
               height="50"
@@ -75,7 +76,7 @@
             </van-image>
           </div>
 
-          <div class="weekly">
+          <div class="weekly" @click="weekly">
             <van-image
               width="50"
               height="50"
@@ -85,7 +86,7 @@
             </van-image>
           </div>
 
-          <div class="history">
+          <div class="history" @click="history">
             <van-image
               width="50"
               height="50"
@@ -94,18 +95,26 @@
               <div>入站必刷</div>
             </van-image>
           </div>
-        </div>
+        </div>    
 
-        <div class="home">
+        <div class="clean"></div>
+
           <view>
             <view v-for="(hot, index) in hots" :key="index">
-              <div>
-                <img :src="hot.pic" />
-                <text>{{ hot.title }}</text>
-              </div>
+            <div class="row">
+              
+              <!-- <div class="pic" > -->
+                  <img :src="hot.pic" style="height:100px;width:200px;background-color:pink; margin-top:20px; border-radius:5%"/>
+              <!-- </div> -->
+              
+                  <div class="text" style="display:flex;flex-direction: column; margin-left:10px;margin-top:20px;width:200px;height:100px">
+                  <text class="title" style="margin-top: 10px;margin-left:5px; width:200px;text-align:left ;font-weight:bold ;font-size:10px;">   {{ hot.title.length > 100 ? hot.title.substring(0,12) : hot.title }}</text>
+                  <text style="margin-left: 5px;margin-top: 10px;width:100px;text-align:left;color:#EE8262">{{ hot.rcmd_reason.content }}</text>
+                  <text style="margin-left: 5px;margin-top: 5px;width:150px; text-align:left">{{ hot.owner.name }}</text>
+                  </div>
+            </div> 
             </view>
           </view>
-        </div>
       </van-tab>
 
       <van-tab title="追番" name="d">
@@ -114,6 +123,16 @@
             <img :src="image" style="height: 100%; width: 100%" />
           </van-swipe-item>
         </van-swipe>
+
+        <div class="rank" style="alight: center">
+          <van-image
+            width="50"
+            height="50"
+            src="http://mychen-skr.oss-cn-beijing.aliyuncs.com/icon_%E5%85%A8%E9%83%A8%E5%86%85%E5%AE%B9%20(1).png"
+          >
+            <div>全部内容</div>
+          </van-image>
+        </div>
       </van-tab>
 
       <van-tab title="影视" name="e">内容</van-tab>
@@ -147,12 +166,32 @@ export default {
       active: 2,
     };
   },
+    computed:{
+    //计算属性，文章摘要的长度超出，就用。。。代替
+    title() {
+      let title = this.hot.title;
+      if (title && title.length > 12) {
+        title = title.substring(0,12) + '...';
+      }
+      return title;
+    }
+  },
+  //调用接口数据
   created() {
     this.axios.get("http://localhost:3000/popular").then((res) => {
       this.hots = res.data.data;
       console.log(this.hots);
     });
   },
+  //跳转
+  methods: {
+    weekly: function (){
+      this.$router.push({ path: '/weekly'})
+    },
+    history: function (){
+      this.$router.push({ path: '/history'})
+    }
+  }
 };
 </script>
 
@@ -172,7 +211,16 @@ export default {
   margin-left: 2.5%;
   margin-bottom: 0%;
   width: 30%;
-  height: 150px;
+  height: 100%;
 }
+.clean{
+  clear: both;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-left: -30rpx;
+}
+
 
 </style>
