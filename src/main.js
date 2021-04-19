@@ -10,7 +10,7 @@ import Hot from "../Hotorders"
 
 
 //按需引入vant的按钮组件
-import { Button, Tabbar, TabbarItem, Icon , Search, Toast, Skeleton, Swipe, SwipeItem, Tab, Tabs, PullRefresh, Lazyload, Image as VanImage, List} from "vant";
+import { Button, Tabbar, TabbarItem, Icon , Search, Toast, Skeleton, Swipe, SwipeItem, Tab, Tabs, PullRefresh, Lazyload, Image as VanImage, List, NavBar} from "vant";
 
 import "vant/lib/index.css";
 
@@ -38,6 +38,7 @@ createApp(App)
   .use(List)
   .use(VueAxios,axios)
   .use(Hotorders)
+  .use(NavBar)
   .mount("#app");
 //vue2写法
 // import { createApp } from 'vue'

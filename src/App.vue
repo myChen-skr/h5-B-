@@ -38,8 +38,8 @@ export default {
 };
 </script>
 <style>
-#nav {
-  padding: 30px;
+/* #nav {
+  padding: 0px;
   background-color: #CF6FA7;
 }
 a {
@@ -47,10 +47,14 @@ a {
   font-weight: bold;
   color: #2c3e50;
   text-decoration: none;
-  margin: 10px;
+  margin: 0px;
 }
 
 .router-link-exact-active {
   color: #f6f6f6;
-}
+} */
+*{
+    padding: 0;
+    margin: 0;
+  }
 </style>

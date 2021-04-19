@@ -1,6 +1,6 @@
 // 底部导航栏组件
 <template>
-  <van-tabbar v-model="active" active-color="#FF3E96" inactive-color="#AAAAAA">
+  <van-tabbar v-model="active" active-color="#FF3E96" inactive-color="#AAAAAA" >
     <van-tabbar-item
       name="home"
       color="#FF3E96"

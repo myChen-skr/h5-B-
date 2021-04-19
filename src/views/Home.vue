@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <van-card>
+  <div class="body">
+    <div>
       <form action="/">
         <van-search
           v-model="value"
@@ -15,21 +15,9 @@
               src="http://mychen-skr.oss-cn-beijing.aliyuncs.com/008.jpg"
             />
           </template>
-
-          <template v-slot:action>
-            <van-icon name="youxi-0" />
-            <van-icon
-              name="http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E6%B8%B8%E6%88%8F.png"
-            />
-          </template>
-
-          <!-- <template v-slot:action>
-          <van-icon name1="youjian-0" />
-           <van-icon name2="http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E9%82%AE%E4%BB%B6.png" />
-        </template> -->
         </van-search>
       </form>
-    </van-card>
+    </div> 
 
     <van-tabs
       @click="onClick"
@@ -66,7 +54,7 @@
 
       <van-tab title="热门" name="c">
         <div>
-          <div class="rank" style="alight: center" >
+          <div class="rank" style="alight: center">
             <van-image
               width="50"
               height="50"
@@ -95,26 +83,71 @@
               <div>入站必刷</div>
             </van-image>
           </div>
-        </div>    
+        </div>
 
         <div class="clean"></div>
 
-          <view>
-            <view v-for="(hot, index) in hots" :key="index">
+        <view>
+          <view v-for="(hot, index) in hots" :key="index">
             <div class="row">
-              
               <!-- <div class="pic" > -->
-                  <img :src="hot.pic" style="height:100px;width:200px;background-color:pink; margin-top:20px; border-radius:5%"/>
+               
+              <img
+                :src="hot.pic"
+                style="
+                  height: 100px;
+                  width: 200px;
+                  background-color: pink;
+                  margin-top: 20px;
+                  border-radius: 5%;
+                "
+              />
+              <!-- <text>{{ hot.short_link }}</text> -->
               <!-- </div> -->
-              
-                  <div class="text" style="display:flex;flex-direction: column; margin-left:10px;margin-top:20px;width:200px;height:100px">
-                  <text class="title" style="margin-top: 10px;margin-left:5px; width:200px;text-align:left ;font-weight:bold ;font-size:10px;">   {{ hot.title.length > 100 ? hot.title.substring(0,12) : hot.title }}</text>
-                  <text style="margin-left: 5px;margin-top: 10px;width:100px;text-align:left;color:#EE8262">{{ hot.rcmd_reason.content }}</text>
-                  <text style="margin-left: 5px;margin-top: 5px;width:150px; text-align:left">{{ hot.owner.name }}</text>
+
+             <div  class="text" style="display: flex;flex-direction: column;margin-left: 10px;margin-top: 10px;width: 200px; height: 100px;">
+                <text class="title" style=" margin-top: 10px; margin-left: 5px; width: 200px; text-align: left; font-weight: bold; font-size: 10px;">
+                  {{hot.title.length > 20? hot.title.substring(0, 21): hot.title}}
+                </text>  
+                <text style="margin-left: 5px; margin-top: 10px; width: 100px; text-align: left; color: #ee8262; ">
+                  {{ hot.rcmd_reason.content }}
+                </text>
+
+                <div class="icon_three">
+                  <div class="row" style=" margin-top: 10px; margin-left: 5px; width: 200px; text-align: left; font-weight: bold; font-size: 10px;">
+                    <div style="height: 18px; width: 18px; margin-top: -1px">
+                      <van-image src="http://mychen-skr.oss-cn-beijing.aliyuncs.com/icon_%E4%BF%A1%E6%81%AF_UP%E4%B8%BB.png" />
+                    </div>
+                    <div>
+                      <text style=" margin-top: 10px; margin-left: 5px; width: 200px; text-align: left; font-weight: bold; color: #8a8a8a;">
+                        {{ hot.owner.name }}
+                      </text>
+                    </div>
                   </div>
-            </div> 
-            </view>
+                  <div class="row1">
+                    <div style="height:18px;width:18px;margin-top:2px;margin-left:5px">
+                      <van-image src="http://mychen-skr.oss-cn-beijing.aliyuncs.com/%E6%92%AD%E6%94%BE.png" />
+                    </div>
+                    <div>
+                      <div style="margin-top:3px;">
+                        <text class="stat" style="height: 15px;;margin-left:5px;color: #8a8a8a;">
+                          {{ (hot.stat.view / 10000).toFixed(1) }}万观看
+                        </text>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="clean"></div>
+
+                  <div class="icon-three;" style="width:30px;margin-left:170px;margin-top:-30px">
+                    <van-image src="http://mychen-skr.oss-cn-beijing.aliyuncs.com/icon_threedot.png"/>
+                  </div>
+                </div> 
+
+              </div>
+            </div>
           </view>
+        </view>
       </van-tab>
 
       <van-tab title="追番" name="d">
@@ -148,6 +181,7 @@ export default {
   data() {
     hots: [];
     return {
+      navbarHeight:0,
       images: [
         "http://mychen-skr.oss-cn-beijing.aliyuncs.com/4.jpg",
         "http://mychen-skr.oss-cn-beijing.aliyuncs.com/3.jpg",
@@ -166,16 +200,28 @@ export default {
       active: 2,
     };
   },
-    computed:{
+  
+  computed: {
     //计算属性，文章摘要的长度超出，就用。。。代替
     title() {
       let title = this.hot.title;
-      if (title && title.length > 12) {
-        title = title.substring(0,12) + '...';
+      console.log(title);
+      if (title && title.length > 20) {
+        title = title.substring(0, 21) + "...";
       }
       return title;
-    }
+    },
+    stat() {
+      let view = this.hot.stat.view;
+      console.log(view);
+      if (view && hot.stat.view.length > 3) {
+        view = view.substring(0, s.indexOf("") + 3);
+        console.log(">>>>>>>>>" + view);
+      }
+      return view;
+    },
   },
+
   //调用接口数据
   created() {
     this.axios.get("http://localhost:3000/popular").then((res) => {
@@ -185,17 +231,21 @@ export default {
   },
   //跳转
   methods: {
-    weekly: function (){
-      this.$router.push({ path: '/weekly'})
+    weekly: function () {
+      this.$router.push({ path: "/weekly" });
     },
-    history: function (){
-      this.$router.push({ path: '/history'})
-    }
-  }
+    history: function () {
+      this.$router.push({ path: "/history" });
+    },
+  },
 };
 </script>
 
 <style scoped>
+
+.body {
+  margin-top: -1.6rem;
+}
 .Hot {
   float: left;
   margin-left: 0%;
@@ -213,7 +263,7 @@ export default {
   width: 30%;
   height: 100%;
 }
-.clean{
+.clean {
   clear: both;
 }
 .row {
@@ -221,6 +271,9 @@ export default {
   flex-direction: row;
   margin-left: -30rpx;
 }
-
-
+.row1 {
+  display: flex;
+  flex-direction: row;
+  margin-left: -30rpx;
+}
 </style>

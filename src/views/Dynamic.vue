@@ -5,6 +5,7 @@
         <img :src="image" style="width:100%" />
       </van-swipe-item>
     </van-swipe>
+    <h2>用于测试效果</h2>
   </div>
 </template>
 
